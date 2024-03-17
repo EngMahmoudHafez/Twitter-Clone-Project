@@ -22,7 +22,7 @@
             @yield('content')
             <div class="row">
                 <x-leftbar></x-leftbar>
-                <x-feeds></x-feeds>
+                <x-feeds :ideas="$ideas"></x-feeds>
                 <x-rightbar></x-rightbar>
             </div>
         </div>

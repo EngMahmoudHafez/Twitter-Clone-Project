@@ -15,3 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IdeaController::class, 'index']);
+Route::post('/ideas', [IdeaController::class, 'stroe']);
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy']);
+Route::get('/ideas/{idea}', [IdeaController::class, 'show']);
