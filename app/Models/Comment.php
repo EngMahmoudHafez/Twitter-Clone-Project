@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class idea extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content'];
 
-    public function comments()
+
+    public function idea()
     {
-        return $this->hasMany(Comment::class);
+        $this->belongsTo(Idea::class);
     }
 }

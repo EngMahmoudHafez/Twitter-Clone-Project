@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\idea;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,10 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        for ($i = 2; $i < 16; $i++) {
+            idea::factory(3)->create([
+                'idea_id' => $i,
+            ]);
+        }
     }
 }

@@ -17,8 +17,11 @@
 
     <x-post-idea></x-post-idea>
     <hr>
+
     @foreach ($ideas as $idea)
-        <x-idea :idea=" $idea "></x-idea>
+
+            <x-idea :idea=" $idea "></x-idea>
+        
     @endforeach
     {{ $ideas->links() }}
 </div>
