@@ -15,4 +15,9 @@ class Comment extends Model
     {
         $this->belongsTo(Idea::class);
     }
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
 }

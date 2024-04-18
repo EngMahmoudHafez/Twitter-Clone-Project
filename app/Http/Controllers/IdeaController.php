@@ -28,16 +28,22 @@ class IdeaController extends Controller
         $att = request()->validate([
             'content' => 'required'
         ]);
+
+
         if (!$att) {
             return redirect('/')->with('danger', 'idea cerated successfully');
         }
+        $att['user_id'] = auth()->id();
         idea::create($att);
         return redirect('/')->with('success', 'idea cerated successfully');
     }
 
     public function destroy(idea $idea)
     {
-
+        //dd($this->IsOwner($idea->user_id));
+        if (!$this->IsOwner($idea->user_id)) {
+            return redirect('/')->with('danger', 'not allowed');
+        }
         $idea->delete();
 
         return redirect('/')->with('success', 'deleted successfully');
@@ -53,12 +59,18 @@ class IdeaController extends Controller
 
     public function edit(idea $idea)
     {
+        if (!$this->IsOwner($idea->user_id)) {
+            return redirect('/')->with('danger', 'not allowed');
+        }
         $editing = true;
 
         return view('ideas.show', ['idea' => $idea, 'editing' => $editing]);
     }
     public function update(Idea $idea)
     {
+        if (!$this->IsOwner($idea->user_id)) {
+            return redirect('/')->with('danger', 'not allowed');
+        }
         $att = request()->validate([
             'content' => 'required'
         ]);
@@ -70,5 +82,12 @@ class IdeaController extends Controller
         // }
         // idea::create($att);
         return redirect('/ideas/' . $idea->id)->with('success', 'idea updated successfully');
+    }
+
+    public function IsOwner($user_id)
+    {
+        if (auth()->id() == $user_id)
+            return true;
+        return false;
     }
 }

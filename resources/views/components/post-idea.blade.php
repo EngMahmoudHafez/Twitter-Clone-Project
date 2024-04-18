@@ -1,3 +1,5 @@
+@auth()
+
 <h4> Share yours ideas </h4>
 <div class="row">
     <form action="/ideas" method="POST" enctype="multipart/form-data">
@@ -13,3 +15,7 @@
         </div>
     </form>
 </div>
+@endauth
+@guest
+    <h4>Login To Share yours ideas </h4>
+@endguest

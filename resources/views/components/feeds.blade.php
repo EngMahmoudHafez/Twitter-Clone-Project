@@ -9,7 +9,7 @@
     @elseif (session('danger'))
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
 
-            repet again
+            {{ session('danger') }}
 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -18,10 +18,11 @@
     <x-post-idea></x-post-idea>
     <hr>
 
-    @foreach ($ideas as $idea)
 
-            <x-idea :idea=" $idea "></x-idea>
-        
-    @endforeach
-    {{ $ideas->links() }}
+    @forelse ($ideas as $idea)
+        <x-idea :idea=" $idea "></x-idea>
+    @empty
+        <h4> NO posts found</h4>
+    @endforelse
+    {{ $ideas->withQueryString()->links() }}
 </div>
