@@ -45,6 +45,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    //public $with = ['ideas'];
+
     public function ideas()
     {
         return $this->hasMany(Idea::class);
@@ -77,5 +79,17 @@ class User extends Authenticatable
             return url('storage/' . $this->img);
         }
         return "https://api.dicebear.com/6.x/fun-emoji/svg?seed=" . $this->name;
+    }
+
+
+    public function likes()
+    {
+        return $this->belongsToMany(Idea::class, 'idea_like');
+    }
+
+    public function LikesIdea(Idea $idea)
+    {
+        //dd($user->followings());
+        return $this->likes()->where('idea_id', $idea->id)->exists();
     }
 }

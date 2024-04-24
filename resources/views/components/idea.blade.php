@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mt-4 ">
     <div class="px-3 pt-4 pb-2">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
@@ -51,17 +51,13 @@
             </p>
 
             <div class="d-flex justify-content-between">
-                <div>
-                    <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                        </span> {{ $idea->likes }} </a>
-                </div>
+                @include('components.like-button')
                 <div>
                     <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                         {{ $idea->created_at->format('d M Y \a\t g:i a') }} </span>
                 </div>
             </div>
-            <hr>
-            <hr>
+
             <x-comment-section :comments="$idea->comments" :idea="$idea"></x-comment-section>
         @endif
     </div>

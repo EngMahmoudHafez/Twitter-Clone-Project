@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\idea;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +14,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $ideas = $user->ideas()->paginate(5);
+        $ideas = Idea::where('user_id', $user->id)->paginate(5);
         return view("users.show", compact("user", "ideas"));
     }
 
@@ -45,7 +46,7 @@ class UserController extends Controller
             $imagePath = request()->file('image')->store('profile', 'public');
             $validated['img'] = $imagePath;
 
-            Storage::disk('public')->delete($user->img);
+            // Storage::disk('public')->delete($user->img);
         }
         $user->update($validated);
         return redirect()->route('profile');

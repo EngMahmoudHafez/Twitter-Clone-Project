@@ -9,6 +9,8 @@ class idea extends Model
 {
     use HasFactory;
 
+    public $with = ['user', 'comments.user'];
+
     protected $fillable = ['content', 'user_id'];
 
     public function comments()
@@ -19,5 +21,9 @@ class idea extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'idea_like');
     }
 }

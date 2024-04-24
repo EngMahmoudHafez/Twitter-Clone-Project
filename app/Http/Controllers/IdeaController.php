@@ -11,11 +11,7 @@ class IdeaController extends Controller
     //
     public function index()
     {
-        // idea::factory()->create([
-        //     'content' => 'hi Mahmoud'
-        // ]);
-
-        $ideas = Idea::with('comments')->orderBy('created_at', 'DESC');
+        $ideas = Idea::orderBy('created_at', 'DESC');
         if (request()->has('search')) {
             //dd(request()->has('search'));
             $ideas = $ideas->where('content', 'like', '%' . request()->get('search') . '%');
