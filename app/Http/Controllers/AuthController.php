@@ -46,7 +46,7 @@ class AuthController extends Controller
             "password" => 'required',
 
         ]);
-
+        //dd(auth()->attempt($validated));
         if (auth()->attempt($validated)) {
 
             request()->session()->regenerate();
@@ -55,7 +55,7 @@ class AuthController extends Controller
         }
 
 
-        return redirect('/')->withErrors([
+        return redirect('/login')->withErrors([
             'email' => 'not match',
         ]);
     }

@@ -18,9 +18,16 @@
                     </li>
                 @endguest
                 @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
-                    </li>
+                    @if (Auth::user()->is_admin)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin DashBoard</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
 

@@ -11,6 +11,11 @@
                     <a class="nav-link {{ Request::is('terms') ? 'text-white bg-primary rounded ' : '' }}" href="/terms">
                         <span>Terms</span></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('feed') ? 'text-white bg-primary rounded ' : '' }}"
+                        href="/feed">
+                        <span>Feeds</span></a>
+                </li>
             </ul>
         </div>
         <div class="card-footer text-center py-2">

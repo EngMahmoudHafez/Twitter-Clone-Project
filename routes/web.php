@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\CommentController;
@@ -39,6 +40,7 @@ Route::get('terms', function () {
     return view('layout.terms');
 });
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
+Route::get('feed', [DashboardController::class, 'feed'])->middleware('auth')->name('feed');
 
 Route::resource('users', UserController::class)->only('edit', 'update')->middleware('auth');
 Route::resource('users', UserController::class)->only('show');
@@ -47,3 +49,4 @@ Route::post('users/{user}/unfollow', [FollowerController::class, 'unfollow'])->m
 
 Route::post('ideas/{idea}/like', [IdeaLikeController::class, 'like'])->middleware('auth')->name('ideas.like');
 Route::post('ideas/{idea}/unlike', [IdeaLikeController::class, 'unlike'])->middleware('auth')->name('ideas.unlike');
+Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth', 'admin'])->name('admin.dashboard');
