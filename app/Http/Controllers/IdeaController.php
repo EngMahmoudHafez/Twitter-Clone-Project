@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateIdeaRequest;
 use App\Models\Comment;
 use App\Models\idea;
 use Illuminate\Http\Request;
@@ -19,11 +20,9 @@ class IdeaController extends Controller
         $ideas = $ideas->paginate(4);
         return view('ideas.index', ['ideas' => $ideas]);
     }
-    public function stroe()
+    public function stroe(CreateIdeaRequest $request)
     {
-        $att = request()->validate([
-            'content' => 'required'
-        ]);
+        $att = $request->validated();
 
 
         if (!$att) {
@@ -36,10 +35,12 @@ class IdeaController extends Controller
 
     public function destroy(idea $idea)
     {
+        $this->authorize('delete', $idea);
+
         //dd($this->IsOwner($idea->user_id));
-        if (!$this->IsOwner($idea->user_id)) {
-            return redirect('/')->with('danger', 'not allowed');
-        }
+        // if (!$this->IsOwner($idea->user_id)) {
+        //     return redirect('/')->with('danger', 'not allowed');
+        // }
         $idea->delete();
 
         return redirect('/')->with('success', 'deleted successfully');
@@ -55,18 +56,21 @@ class IdeaController extends Controller
 
     public function edit(idea $idea)
     {
-        if (!$this->IsOwner($idea->user_id)) {
-            return redirect('/')->with('danger', 'not allowed');
-        }
+        $this->authorize('update', $idea);
+
+        // if (!$this->IsOwner($idea->user_id)) {
+        //     return redirect('/')->with('danger', 'not allowed');
+        // }
         $editing = true;
 
         return view('ideas.show', ['idea' => $idea, 'editing' => $editing]);
     }
     public function update(Idea $idea)
     {
-        if (!$this->IsOwner($idea->user_id)) {
-            return redirect('/')->with('danger', 'not allowed');
-        }
+        $this->authorize('update', $idea);
+        // if (!$this->IsOwner($idea->user_id)) {
+        //     return redirect('/')->with('danger', 'not allowed');
+        // }
         $att = request()->validate([
             'content' => 'required'
         ]);

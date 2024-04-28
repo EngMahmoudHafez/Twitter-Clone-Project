@@ -5,14 +5,14 @@
             <form action="{{ route('ideas.unlike', $idea->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="fw-light nav-link fs-6">
-                    UnLike <span class="far fa-heart me-1"></span> {{ $idea->likes()->count() }} </button>
+                    UnLike <span class="far fa-heart me-1"></span> {{ $idea->likes_count }} </button>
 
             </form>
         @else
             <form action="{{ route('ideas.like', $idea->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="fw-light nav-link fs-6">Like <span class="fas fa-heart me-1">
-                    </span> {{ $idea->likes()->count() }} </button>
+                    </span> {{ $idea->likes_count }} </button>
 
             </form>
         @endif
@@ -20,6 +20,6 @@
     @endauth
     @guest()
         <a href="/login" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-            </span>Like {{ $idea->likes()->count() }} </a>
+            </span>Like {{ $idea->likes_count }} </a>
     @endguest
 </div>

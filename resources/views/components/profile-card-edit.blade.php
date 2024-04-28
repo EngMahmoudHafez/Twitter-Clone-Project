@@ -17,7 +17,7 @@
                     <div>
                         @auth
                             @if (Auth::id() == $user->id)
-                                <a class="mx-2" href="/users/{{ $user->id }}/show">View</a>
+                                <a class="mx-2" href="/users/{{ $user->id }}">View</a>
                             @endif
                         @endauth
 

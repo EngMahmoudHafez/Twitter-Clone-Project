@@ -5,12 +5,12 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ $idea->user->getImageURL() }}"
                     alt="{{ $idea->user->name }}">
                 <div>
-                    <h5 class="card-title mb-0"><a href="users/{{ $idea->user_id }}"> {{ $idea->user->name }}
+                    <h5 class="card-title mb-0"><a href="/users/{{ $idea->user_id }}"> {{ $idea->user->name }}
                         </a></h5>
                 </div>
             </div>
             <div>
-                @if ($idea->user->id == auth()->id())
+                @can('update', $idea)
                     <form action="/ideas/{{ $idea->id }}" method="post">
                         @method('delete')
                         @csrf
@@ -18,7 +18,7 @@
                         <a href="/ideas/{{ $idea->id }}">view</a>
                         <button class="btn btn-danger btn-sm"> X </button>
                     </form>
-                @endif
+                @endcan
             </div>
         </div>
     </div>
