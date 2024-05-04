@@ -8,7 +8,7 @@
                     <img style="width:150px" class="me-3 avatar-sm rounded-circle" src="{{ $user->getImageURL() }}"
                         alt="Mario Avatar">
                     <div>
-                        <label>Name</label>
+                        <label>Name:</label>
                         <input value="{{ $user->name }}" name="name" type="text" class="form-control">
                         @error('name')
                             <span class="fs-6 text-danger">{{ $message }}</span>
