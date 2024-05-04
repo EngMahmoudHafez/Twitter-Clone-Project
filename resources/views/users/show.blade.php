@@ -16,7 +16,7 @@
                 @endforelse
                 {{ $ideas->withQueryString()->links() }}
             </div>
-            <x-rightbar></x-rightbar>
+            @include('components.rightbar')
         </div>
     </div>
 @endsection

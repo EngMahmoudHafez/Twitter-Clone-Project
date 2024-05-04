@@ -23,7 +23,7 @@
                 @endif
                 <x-idea :idea="$idea" :editing="$editing"></x-idea>
             </div>
-            <x-rightbar></x-rightbar>
+            @include('components.rightbar')
         </div>
     </div>
 @endsection

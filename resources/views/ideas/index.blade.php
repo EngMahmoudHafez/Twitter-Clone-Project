@@ -7,7 +7,7 @@
         <div class="row">
             <x-leftbar></x-leftbar>
             <x-feeds :ideas="$ideas" class="mt-4 "></x-feeds>
-            <x-rightbar></x-rightbar>
+            @include('components.rightbar')
         </div>
     </div>
 @endsection()

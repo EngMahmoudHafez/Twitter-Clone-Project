@@ -10,7 +10,7 @@
                 @include('components.profile-card-edit')
 
             </div>
-            <x-rightbar></x-rightbar>
+            @include('components.rightbar')
         </div>
     </div>
 @endsection

@@ -8,14 +8,11 @@
         <div class="row">
             <x-leftbar></x-leftbar>
             <div class="col-6">
-                <h1>terms</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro dolorem neque dignissimos eveniet
-                    consequatur error
-                    vero dolores dicta quae eos commodi consequuntur non, excepturi voluptatem eius, libero delectus odio
-                    facilis?</p>
+                <h1>@lang('terms.title')</h1>
+                <p>@lang('terms.content')</p>
 
             </div>
-            <x-rightbar></x-rightbar>
+            @include('components.rightbar')
         </div>
     </div>
 @endsection()

@@ -57,5 +57,5 @@ Route::get('lang/{lang}', function ($lang) {
     app()->setLocale($lang);
     session()->put('locale', $lang);
     //dd(app()->getLocale());
-    return redirect('/');
+    return redirect()->back();
 })->name('lang');

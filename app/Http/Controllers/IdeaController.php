@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateIdeaRequest;
 use App\Models\Comment;
 use App\Models\idea;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IdeaController extends Controller
@@ -18,7 +19,17 @@ class IdeaController extends Controller
             $ideas = $ideas->where('content', 'like', '%' . request()->get('search') . '%');
         }
         $ideas = $ideas->paginate(4);
-        return view('ideas.index', ['ideas' => $ideas]);
+        // $topUsers = $this->follow()->limit(5);
+        // dd($topUsers);
+        return view('ideas.index', [
+            'ideas' => $ideas,
+
+        ]);
+    }
+    public function follow()
+    {
+        return User::withCount('ideas')
+            ->orderBy('ideas_count', 'DESC')->get();
     }
     public function stroe(CreateIdeaRequest $request)
     {
