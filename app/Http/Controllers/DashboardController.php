@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $followingIDs = $user->followings()->pluck("user_id");
         $ideas = idea::whereIn('user_id', $followingIDs)->latest();
         if (request()->has('search')) {
-            $ideas = $ideas->where('content', 'like', '%' . request()->get('search') . '%');
+            $ideas = $ideas->Search(request('search', ''));
         }
         $ideas = $ideas->paginate(4);
         return view('ideas.index', ['ideas' => $ideas]);

@@ -18,9 +18,8 @@
     <x-post-idea></x-post-idea>
     <hr>
 
-
     @forelse ($ideas as $idea)
-        <x-idea :idea=" $idea "></x-idea>
+        <x-idea :idea="$idea"></x-idea>
     @empty
         <h4> NO posts found</h4>
     @endforelse

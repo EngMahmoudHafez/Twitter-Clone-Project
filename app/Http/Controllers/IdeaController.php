@@ -16,7 +16,7 @@ class IdeaController extends Controller
         $ideas = Idea::orderBy('created_at', 'DESC');
         if (request()->has('search')) {
             //dd(request()->has('search'));
-            $ideas = $ideas->where('content', 'like', '%' . request()->get('search') . '%');
+            $ideas = $ideas->Search(request('search', ''));
         }
         $ideas = $ideas->paginate(4);
         // $topUsers = $this->follow()->limit(5);
