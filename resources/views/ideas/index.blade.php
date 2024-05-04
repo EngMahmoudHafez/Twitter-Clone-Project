@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('title', 'home')
 
 @section('content')
     <div class="container py-4">
