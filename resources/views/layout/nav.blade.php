@@ -22,6 +22,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin DashBoard</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
