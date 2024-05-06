@@ -14,9 +14,31 @@
                     <a class="h6 mb-0" href="/users/{{ $user->id }}">{{ $user->name }}</a>
                     <p class="mb-0 small text-truncate">{{ $user->email }}</p>
                 </div>
+
                 <a class="btn btn-primary-soft rounded-circle icon-md ms-auto" href="#"><i
                         class="fa-solid fa-plus">
                     </i></a>
+                {{-- @auth
+
+                    @if (Auth::id() !== $user->id)
+                        <div class="ms-auto">
+                            @if (Auth::user()->follows($user))
+                                <form method="POST" action="{{ route('users.unfollow', "$user->id") }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        class="btn btn-primary-soft rounded-circle icon-md ms-auto"> UnFollow </button>
+                                </form>
+                            @else
+                                <form method="POST" action="{{ route('users.follow', "$user->id") }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-sm"
+                                        class="btn btn-primary-soft rounded-circle icon-md ms-auto"> Follow </button>
+                                </form>
+                            @endif
+
+                        </div>
+                    @endif @endauth --}}
+
             </div>
         @endforeach
 
