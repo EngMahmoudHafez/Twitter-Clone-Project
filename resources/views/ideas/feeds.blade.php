@@ -15,11 +15,11 @@
         </div>
     @endif
 
-    <x-post-idea></x-post-idea>
+    @include('ideas.shared.post-idea')
     <hr>
 
     @forelse ($ideas as $idea)
-        <x-idea :idea="$idea"></x-idea>
+        @include('ideas.shared.idea')
     @empty
         <h4> NO posts found</h4>
     @endforelse

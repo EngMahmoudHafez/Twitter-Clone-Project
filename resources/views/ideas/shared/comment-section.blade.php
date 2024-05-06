@@ -12,7 +12,7 @@
 
     <hr>
     @forelse ($idea->comments as $comment)
-        <x-comment :comment="$comment"></x-comment>
+        @include('ideas.shared.comment')
     @empty
         <p class="text-center mt-4"> No Comments found ..</p>
     @endforelse

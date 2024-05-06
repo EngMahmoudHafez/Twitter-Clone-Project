@@ -7,7 +7,7 @@
         <div class="row">
             <x-leftbar></x-leftbar>
             <div class="col-6">
-                @include('components.profile-card-edit')
+                @include('users.shared.profile-card-edit')
 
             </div>
             @include('components.rightbar')

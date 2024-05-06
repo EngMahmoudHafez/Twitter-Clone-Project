@@ -6,7 +6,7 @@
 
         <div class="row">
             <x-leftbar></x-leftbar>
-            <x-feeds :ideas="$ideas" class="mt-4 "></x-feeds>
+            @include('ideas.feeds')
             @include('components.rightbar')
         </div>
     </div>

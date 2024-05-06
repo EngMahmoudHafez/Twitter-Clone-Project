@@ -51,14 +51,14 @@
             </p>
 
             <div class="d-flex justify-content-between">
-                @include('components.like-button')
+                @include('ideas.shared.like-button')
                 <div>
                     <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                         {{ $idea->created_at->format('d M Y \a\t g:i a') }} </span>
                 </div>
             </div>
 
-            <x-comment-section :comments="$idea->comments" :idea="$idea"></x-comment-section>
+            @include('ideas.shared.comment-section')
         @endif
     </div>
 </div>

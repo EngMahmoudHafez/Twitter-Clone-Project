@@ -21,7 +21,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <x-idea :idea="$idea" :editing="$editing"></x-idea>
+                @include('ideas.shared.idea')
             </div>
             @include('components.rightbar')
         </div>

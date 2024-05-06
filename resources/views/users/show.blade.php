@@ -7,7 +7,7 @@
         <div class="row">
             <x-leftbar></x-leftbar>
             <div class="col-6">
-                @include('components.profile-card')
+                @include('users.shared.profile-card')
 
                 @forelse ($ideas as $idea)
                     <x-idea :idea="$idea"></x-idea>

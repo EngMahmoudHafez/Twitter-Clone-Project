@@ -37,7 +37,7 @@ Route::group(["prefix" => "ideas", "middleware" => ["auth"]], function () {
 
 Route::get('/', [IdeaController::class, 'index'])->name('dashboard');
 Route::get('terms', function () {
-    return view('layout.terms');
+    return view('terms');
 });
 Route::get('profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
 Route::get('feed', [DashboardController::class, 'feed'])->middleware('auth')->name('feed');
