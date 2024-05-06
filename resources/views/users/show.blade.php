@@ -10,7 +10,7 @@
                 @include('users.shared.profile-card')
 
                 @forelse ($ideas as $idea)
-                    <x-idea :idea="$idea"></x-idea>
+                    @include('ideas.shared.idea')
                 @empty
                     <h4> NO posts found</h4>
                 @endforelse
